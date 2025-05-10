@@ -6,8 +6,7 @@ do
 
     add_urls("https://github.com/ForMyDearest/u8lib.git")
 
-    add_deps("yyjson")
-    add_deps("mimalloc", { configs = { shared = true } })
+    add_deps("mimalloc")
 
     on_load(function(package)
         if package:is_targetos("windows") then
