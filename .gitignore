@@ -1,0 +1,7 @@
+.idea/
+.git/
+.xmake/
+*build*/
+CMakeLists.txt
+vs*/
+compile_commands.json
