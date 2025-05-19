@@ -16,6 +16,14 @@ do
         add_frameworks("CoreFoundation")
     end
 
+    on_load(function(package)
+        if package:config("shared") then
+            package:add("defines", "HANA_BASE_API=HANA_IMPORTS")
+        else
+            package:add("defines", "HANA_BASE_API=")
+        end
+    end)
+
     on_install(function(package)
         io.writefile("xmake.lua", [[
             includes("xmake/pack.lua")
@@ -23,18 +31,18 @@ do
         import("package.tools.xmake").install(package)
     end)
 
-    --on_test(function(package)
-    --    assert(package:check_cxxsnippets({ test = [[
-    --        #include <hana/json.hpp>
-    --
-    --        void test() {
-    --            using namespace hana;
-    --            JsonWriter writer(5);
-    --            json_write(writer, u8"int", 5);
-    --        }
-    --    ]] }, { configs = { languages = "c++20" } })
-    --    )
-    --end)
+    on_test(function(package)
+        assert(package:check_cxxsnippets({ test = [[
+            #include <hana/json.hpp>
+
+            void test() {
+                using namespace hana;
+                JsonWriter writer(5);
+                json_write(writer, u8"int", 5);
+            }
+        ]] }, { configs = { languages = "c++20" } })
+        )
+    end)
 
     package_end()
 end
