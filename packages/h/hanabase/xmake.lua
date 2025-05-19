@@ -9,10 +9,10 @@ do
     add_deps("xxhash", { configs = { shared = true } })
     add_deps("yyjson", { configs = { shared = true } })
 
-    if (is_os("windows")) then
+    if (is_plat("windows")) then
         add_syslinks("Ole32")
     end
-    if (is_os("macosx")) then
+    if (is_plat("macosx")) then
         add_frameworks("CoreFoundation")
     end
 
