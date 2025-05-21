@@ -9,13 +9,6 @@ do
     add_deps("xxhash", { configs = { shared = true } })
     add_deps("yyjson", { configs = { shared = true } })
 
-    if (is_plat("windows")) then
-        add_syslinks("Ole32")
-    end
-    if (is_plat("macosx")) then
-        add_frameworks("CoreFoundation")
-    end
-
     on_load(function(package)
         if package:config("shared") then
             package:add("defines", "HANA_BASE_API=HANA_IMPORTS")
