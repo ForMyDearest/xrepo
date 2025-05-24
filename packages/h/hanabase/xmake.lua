@@ -26,7 +26,7 @@ do
 
     on_test(function(package)
         assert(package:check_cxxsnippets({ test = [[
-            #include <hana/json.hpp>
+            #include <hana/archive/json.hpp>
 
             void test() {
                 using namespace hana;
