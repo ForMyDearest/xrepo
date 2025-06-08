@@ -8,9 +8,6 @@ do
 
     add_configs("shared", { default = true, type = "boolean", readonly = true })
 
-    add_deps("xxhash", { configs = { shared = true } })
-    add_deps("yyjson", { configs = { shared = true } })
-
     on_load(function(package)
         package:add("defines", "HANA_BASE_API=HANA_IMPORTS")
     end)
