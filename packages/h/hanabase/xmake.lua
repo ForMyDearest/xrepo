@@ -25,7 +25,7 @@ do
 
             void test() {
                 using namespace hana;
-                JsonWriter writer(5);
+                auto writer = JsonWriter::create(5);
                 json_write(writer, u8"int", 5);
             }
         ]] }, { configs = { languages = "c++20" } })
